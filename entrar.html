@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entrar - Raspadinha</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Início</a></li>
+                <li><a href="raspadinhas.html" class="nav-link">Raspadinhas</a></li>
+                <li><a href="registrar.html" class="nav-link">Registrar</a></li>
+                <li><a href="premios.html" class="nav-link">Prêmios</a></li>
+                <li><a href="entrar.html" class="nav-link active">Entrar</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="login-page">
+            <div class="container">
+                <div class="form-container">
+                    <div class="form-header">
+                        <h1>Entrar</h1>
+                        <p>Faça login para acessar sua conta</p>
+                    </div>
+
+                    <form class="login-form" id="loginForm">
+                        <div class="form-group">
+                            <label for="emailLogin">E-mail</label>
+                            <input type="email" id="emailLogin" name="email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="senhaLogin">Senha</label>
+                            <input type="password" id="senhaLogin" name="senha" required>
+                        </div>
+
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="lembrarMe" name="lembrarMe">
+                                <span class="checkmark"></span>
+                                Lembrar de mim
+                            </label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Entrar</button>
+                    </form>
+
+                    <div class="form-links">
+                        <a href="#" class="forgot-password">Esqueceu sua senha?</a>
+                    </div>
+
+                    <div class="form-footer">
+                        <p>Não tem uma conta? <a href="registrar.html">Registre-se aqui</a></p>
+                    </div>
+
+                    <div class="social-login">
+                        <div class="divider">
+                            <span>ou</span>
+                        </div>
+                        <div class="social-buttons">
+                            <button class="social-btn google-btn">
+                                Entrar com Google
+                            </button>
+                            <button class="social-btn facebook-btn">
+                                Entrar com Facebook
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 raspadinhamagica.com.br. Todos os direitos reservados.</p>
+                <p>Raspadinhas e outros jogos de azar são regulamentados e cobertos pela nossa licença de jogos. Jogue com responsabilidade.</p>
+                <div class="footer-links">
+                    <a href="#">Regulamentos</a>
+                    <a href="#">Jogo responsável</a>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                    <a href="#">Ajuda</a>
+                    <a href="#">Perguntas Frequentes</a>
+                    <a href="#">Como Jogar</a>
+                    <a href="#">Suporte Técnico</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
