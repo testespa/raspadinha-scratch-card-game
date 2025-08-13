@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Raspadinha</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <header class="admin-header">
+        <nav>
+            <div class="admin-nav">
+                <div class="admin-logo">
+                    <h2>Painel Admin - Raspadinha</h2>
+                </div>
+                <div class="admin-user">
+                    <span>Administrador</span>
+                    <a href="#" onclick="adminLogout()" class="logout-btn">Sair</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="admin-container">
+        <aside class="admin-sidebar">
+            <ul class="admin-menu">
+                <li><a href="#dashboard" class="menu-item active" data-section="dashboard">Dashboard</a></li>
+                <li><a href="#users" class="menu-item" data-section="users">Usuários</a></li>
+                <li><a href="#demo-accounts" class="menu-item" data-section="demo-accounts">Contas Demo</a></li>
+                <li><a href="#games" class="menu-item" data-section="games">Jogos</a></li>
+                <li><a href="#prizes" class="menu-item" data-section="prizes">Prêmios</a></li>
+                <li><a href="#rtp-settings" class="menu-item" data-section="rtp-settings">RTP dos Prêmios</a></li>
+                <li><a href="#transactions" class="menu-item" data-section="transactions">Transações</a></li>
+                <li><a href="#payment-api" class="menu-item" data-section="payment-api">API de Pagamento</a></li>
+                <li><a href="#settings" class="menu-item" data-section="settings">Configurações</a></li>
+            </ul>
+        </aside>
+
+        <main class="admin-main">
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="admin-section active">
+                <div class="section-header">
+                    <h1>Dashboard</h1>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">👥</div>
+                        <div class="stat-info">
+                            <h3>Total de Usuários</h3>
+                            <p class="stat-number">1,247</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">🎮</div>
+                        <div class="stat-info">
+                            <h3>Jogos Ativos</h3>
+                            <p class="stat-number">8</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-info">
+                            <h3>Receita Hoje</h3>
+                            <p class="stat-number">R$ 15.420,00</p>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-info">
+                            <h3>Prêmios Entregues</h3>
+                            <p class="stat-number">342</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-activity">
+                    <h2>Atividade Recente</h2>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <span class="activity-time">10:30</span>
+                            <span class="activity-text">Usuário João S. ganhou R$ 100,00 no Raspa Fácil</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">10:15</span>
+                            <span class="activity-text">Nova conta criada: Maria P.</span>
+                        </div>
+                        <div class="activity-item">
+                            <span class="activity-time">09:45</span>
+                            <span class="activity-text">Saque processado: R$ 500,00 para Carlos M.</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        // Add authentication check and logout function
+        function adminLogout() {
+            if (confirm('Tem certeza que deseja sair do painel administrativo?')) {
+                localStorage.removeItem('adminSession');
+                window.location.href = 'admin-login.html';
+            }
+        }
+        
+        // Check authentication on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const sessionData = localStorage.getItem('adminSession');
+            if (!sessionData) {
+                window.location.href = 'admin-login.html';
+                return;
+            }
+            
+            try {
+                const session = JSON.parse(sessionData);
+                const now = new Date();
+                const expiresAt = new Date(session.expiresAt);
+                
+                if (expiresAt <= now) {
+                    localStorage.removeItem('adminSession');
+                    window.location.href = 'admin-login.html';
+                    return;
+                }
+                
+                // Update admin header with user info
+                const adminUserElement = document.querySelector('.admin-user span');
+                if (adminUserElement && session.username) {
+                    adminUserElement.textContent = session.username;
+                }
+            } catch (error) {
+                localStorage.removeItem('adminSession');
+                window.location.href = 'admin-login.html';
+            }
+        });
+    </script>
+    <script src="js/script.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
