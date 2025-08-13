@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Administrativo - Raspadinha</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-login-body">
+    <div class="admin-login-container">
+        <div class="admin-login-card">
+            <div class="admin-login-header">
+                <h1>Painel Administrativo</h1>
+                <p>Acesso restrito apenas para administradores</p>
+            </div>
+
+            <form class="admin-login-form" id="adminLoginForm">
+                <div class="form-group">
+                    <label for="adminUsername">Usuário Administrativo:</label>
+                    <input type="text" id="adminUsername" name="username" required class="admin-input" placeholder="Digite seu usuário">
+                </div>
+
+                <div class="form-group">
+                    <label for="adminPassword">Senha:</label>
+                    <input type="password" id="adminPassword" name="password" required class="admin-input" placeholder="Digite sua senha">
+                </div>
+
+                <div class="form-group">
+                    <label for="adminCode">Código de Segurança:</label>
+                    <input type="text" id="adminCode" name="securityCode" required class="admin-input" placeholder="Código de 6 dígitos">
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="rememberAdmin">
+                        <span class="checkmark"></span>
+                        Lembrar por 24 horas
+                    </label>
+                </div>
+
+                <button type="submit" class="admin-login-btn">Acessar Painel</button>
+            </form>
+
+            <div class="admin-login-info">
+                <div class="security-notice">
+                    <h3>🔒 Acesso Seguro</h3>
+                    <ul>
+                        <li>Todas as tentativas de login são registradas</li>
+                        <li>Após 3 tentativas incorretas, o IP será bloqueado por 30 minutos</li>
+                        <li>Use apenas credenciais autorizadas</li>
+                    </ul>
+                </div>
+
+                <div class="demo-credentials">
+                    <h4>Credenciais de Demonstração:</h4>
+                    <div class="credential-item">
+                        <strong>Usuário:</strong> admin
+                    </div>
+                    <div class="credential-item">
+                        <strong>Senha:</strong> admin123
+                    </div>
+                    <div class="credential-item">
+                        <strong>Código:</strong> 123456
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-login-footer">
+                <a href="index.html" class="back-to-site">← Voltar ao Site</a>
+                <div class="login-attempts" id="loginAttempts">
+                    Tentativas restantes: <span id="attemptsCount">3</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Verificando credenciais...</p>
+        </div>
+    </div>
+
+    <script src="js/admin-auth.js"></script>
+</body>
+</html>
